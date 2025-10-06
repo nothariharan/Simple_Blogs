@@ -12,7 +12,7 @@ const TopicsList = () => {
         <h3 className="font-semibold text-lg mb-4">Topics For you</h3>
         <div className="flex flex-wrap gap-2">
             {topics.map((topic,index)=>(
-                <span key={index} className="px-4 py-1 bg-gray-200 text-gray-700 text-sm rounded-full cursor-pointer hover:bg-gray-500">{topic}</span>
+                <span key={index} className="px-4 py-1 bg-gray-200 text-gray-700 text-sm rounded-full cursor-pointer hover:bg-gray-400">{topic}</span>
             ))}
         </div>
     </div>
