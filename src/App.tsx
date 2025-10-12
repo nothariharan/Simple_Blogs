@@ -5,7 +5,9 @@ import TopicsList from "./components/TopicsList"
 import TrendsList from "./components/TrendsList"
 import { BlogProvider } from "./shared/BlogContext"
 import { useState } from "react"
-import { Blog } from "./types"
+import type { Blog } from "./types"
+import Modal from "./components/Modal"
+import BlogForm from "./components/BlogForm"
 
 const App = () => {
   const [isModalOpen,setModalOpen] = useState(false)
@@ -15,7 +17,7 @@ const App = () => {
     setModalOpen(true)
   }
 
-  const openModalForEditing = () => {
+  const openModalForEditing = (blog: Blog) => {
     setEditingBlog(blog)
     setModalOpen(true)
   }
@@ -28,7 +30,8 @@ const App = () => {
             <div>
               <button onClick={openModalforNewBlog} className="ml-[7rem] bg-black justify-center text-white px-4 py-2 rounded mb-4">Add New Blog <IoMdAddCircle className="ml-[.5rem]"/></button>
               {/*Article*/}
-              {isModalOpen && <Modal></Modal>}
+              {isModalOpen && <Modal onClose={()=>setModalOpen(false)}>
+                <BlogForm />/</Modal>}
             </div>
           </section>
           <div className="w-[30%]">

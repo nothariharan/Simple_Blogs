@@ -1,5 +1,5 @@
 import { createContext,useState,useContext } from "react";
-import { Blog } from "../types";
+import type { Blog } from "../types";
 
 interface BlogContextType {
     blogs: Blog[]
@@ -26,7 +26,7 @@ export const BlogProvider: React.FC<{children: React.ReactNode}> = ({
     }
 
     return (
-        <BlogContext.Provider value={{blogs,addblog,updateBlog,deleteBlog}}>
+        <BlogContext.Provider value={{blogs,addBlog,updateBlog,deleteBlog}}>
             {children}
         </BlogContext.Provider>    )
 }
