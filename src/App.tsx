@@ -8,6 +8,7 @@ import { useState } from "react"
 import type { Blog } from "./types"
 import Modal from "./components/Modal"
 import BlogForm from "./components/BlogForm"
+import ArticleList from "./components/ArticleList"
 
 const App = () => {
   const [isModalOpen,setModalOpen] = useState(false)
@@ -28,10 +29,15 @@ const App = () => {
         <div className="flex justify-center">
           <section className="mx-auto p-6">
             <div>
-              <button onClick={openModalforNewBlog} className="ml-[7rem] bg-black justify-center text-white px-4 py-2 rounded mb-4">Add New Blog <IoMdAddCircle className="ml-[.5rem]"/></button>
-              {/*Article*/}
+              <button
+                onClick={openModalforNewBlog}
+                className="ml-[7rem] bg-black flex justify-center items-center text-white px-4 py-2 rounded mb-4"
+              >
+                Add New Blog <IoMdAddCircle className="ml-[.5rem]" />
+              </button>
+              <ArticleList onEdit={openModalForEditing}/>
               {isModalOpen && <Modal onClose={()=>setModalOpen(false)}>
-                <BlogForm existingBlog={editingBlog} onClose = {() => setModalOpen(false)}/>/</Modal>}
+                <BlogForm existingBlog={editingBlog} onClose = {() => setModalOpen(false)}/></Modal>}
             </div>
           </section>
           <div className="w-[30%]">

@@ -22,6 +22,23 @@ const BlogForm: React.FC<BlogFormProps> = ({existingBlog,onClose}) => {
         }
 
     },[existingBlog])
+const handleSubmit = () => {
+    const blog:Blog ={
+        id:existingBlog?existingBlog.id:Date.now(),
+        title,
+        description,
+        image,
+        time
+    }
+    if (existingBlog) {
+        updateBlog(blog)
+    }
+    else {
+        addBlog(blog)
+    }
+
+    onClose()
+}
   return (
     <div className="bg-white p-6 rounded-lg w-[30rem] mx-auto">
         <h3 className="font-semibold text-xl text-black"> {existingBlog? 'Edit Blog' : 'Add Blog'}</h3>
@@ -48,6 +65,10 @@ const BlogForm: React.FC<BlogFormProps> = ({existingBlog,onClose}) => {
           className="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
         />
         </div>
+        <section className="flex justify-end mt-6 space-x-4">
+            <button onClick={handleSubmit} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-black">{existingBlog?"Update":"Add"}</button>
+            <button onClick={onClose} className="bg-gray-500 text-white px-6 py-2 rounded-lg font-semibold shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+        </section>
     </div>
   )
 }
