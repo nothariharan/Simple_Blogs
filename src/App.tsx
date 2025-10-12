@@ -31,7 +31,7 @@ const App = () => {
               <button onClick={openModalforNewBlog} className="ml-[7rem] bg-black justify-center text-white px-4 py-2 rounded mb-4">Add New Blog <IoMdAddCircle className="ml-[.5rem]"/></button>
               {/*Article*/}
               {isModalOpen && <Modal onClose={()=>setModalOpen(false)}>
-                <BlogForm />/</Modal>}
+                <BlogForm existingBlog={editingBlog} onClose = {() => setModalOpen(false)}/>/</Modal>}
             </div>
           </section>
           <div className="w-[30%]">
